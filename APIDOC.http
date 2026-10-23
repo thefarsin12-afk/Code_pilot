@@ -1,0 +1,46 @@
+# ==== ADMIN ====
+
+#admin creating api endpoint
+###
+POST http://127.0.0.1:8000/account/admin/register/
+Content-Type: application/json
+
+{
+    "username":"admin3",
+    "email":"admin@gmail.com",
+    "password":"password@123",
+    "phone":"8967543267"
+    
+}
+
+#==== STUDENT ====
+
+# api for student registration endponit
+###
+POST http://127.0.0.1:8000/account/student/register/
+Content-Type: application/json
+
+{
+    "username":"student",
+    "email":"student@gmail.com",
+    "password":"password@123",
+    "phone":"8967543268 "
+}
+
+# ==== EXAM ====
+
+# token generating api endpoint
+###
+POST http://127.0.0.1:8000/exam/admin/login/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"password@123"
+}
+
+# api for exam listing
+###
+GET http://127.0.0.1:8000/exam/add/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
