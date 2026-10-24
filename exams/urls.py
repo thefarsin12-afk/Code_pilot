@@ -3,6 +3,7 @@ from django.urls import path
 from rest_framework.authtoken.views import ObtainAuthToken
 
 from exams.views import ExamListCreate
+from exams.views import ExamRetrieveUpdateDelete
 
 
 urlpatterns = [
@@ -12,6 +13,9 @@ urlpatterns = [
 
     # ==== exam list create section ====
     path('add/',ExamListCreate.as_view()),
+
+    # ==== exam retrieve update delete section ====
+    path('add/<int:pk>/',ExamRetrieveUpdateDelete.as_view()),
 
     
 ]

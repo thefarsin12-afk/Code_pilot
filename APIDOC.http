@@ -27,7 +27,7 @@ Content-Type: application/json
     "phone":"8967543268 "
 }
 
-# ==== EXAM ====
+# ======== EXAM ========
 
 # token generating api endpoint
 ###
@@ -35,12 +35,59 @@ POST http://127.0.0.1:8000/exam/admin/login/
 Content-Type: application/json
 
 {
-    "username":"admin",
+    "username":"admin1",
     "password":"password@123"
 }
 
 # api for exam listing
 ###
 GET http://127.0.0.1:8000/exam/add/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+# api for creating record
+###
+POST http://127.0.0.1:8000/exam/add/
+Content-Type: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+{
+  "title": "Django Assessment",
+  "batch": "Python Django Batch 01",
+  "language": "DJANGO",
+  "exam_date": "2026-10-25",
+  "duration": 90,
+  "start_time": "2026-10-25T09:00:00Z",
+  "status": "PENDING"
+}
+
+# api for retrieve exam
+###
+GET http://127.0.0.1:8000/exam/add/1/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+# api for updating exam
+###
+PUT http://127.0.0.1:8000/exam/add/1/
+Content-Type: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+{
+  "id": 1,
+  "title": "Python Assessment",
+  "batch": "Python Django Batch 01",
+  "language": "PYTHON",
+  "exam_date": "2026-10-26",
+  "duration": 60,
+  "start_time": "2026-10-25T09:00:00Z",
+  "end_time": "2026-10-25T10:00:00Z",
+  "status": "PENDING",
+  "created_by": 1
+}
+
+# api for deleting exam
+###
+DELETE http://127.0.0.1:8000/exam/add/1/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
