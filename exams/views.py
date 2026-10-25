@@ -30,29 +30,32 @@ class ExamListCreate(APIView):
 
         serializer = AssementSerializer(data = form_data)
 
-        if serializer.is_valid():
+        if serializer.is_valid(): 
 
-            cleaned_data = serializer.validated_data
+            serializer.save(created_by=request.user)
 
-            cleaned_data.pop("start_time")
+            # cleaned_data = serializer.validated_data
 
-            exam_date = cleaned_data["exam_date"]
+            # cleaned_data.pop("start_time")
 
-            last_exam_object = AssementModel.objects.filter(created_by=request.user,exam_date=exam_date).order_by("start_time").last()
+            # exam_date = cleaned_data["exam_date"]
 
-            if last_exam_object:
+            # last_exam_object = AssementModel.objects.filter(created_by=request.user,exam_date=exam_date).order_by("start_time").last()
 
-                start_time = (last_exam_object.end_time + timedelta(hours=1))
+            # if last_exam_object:
 
-            else:
+            #     start_time = datetime.combine(exam_date, last_exam_object.end_time) + timedelta(hours=1)
 
-                start_time = datetime.combine(exam_date,time(9,0))
+            # else:
 
-            exam_end_time = start_time + timedelta(minutes=cleaned_data["duration"])    
+            #     start_time = datetime.combine(exam_date,time(9,0))
+
+            # exam_end_time = start_time + timedelta(minutes=cleaned_data["duration"])
             
-            qs = AssementModel.objects.create(**cleaned_data,created_by=request.user,start_time=start_time,end_time=exam_end_time)
+            # # The model stores clock times, so persist only the time portion.
+            # qs = AssementModel.objects.create(**cleaned_data,created_by=request.user,start_time=start_time.time(),end_time=exam_end_time.time())
 
-            serializer = AssementSerializer(qs)
+            # serializer = AssementSerializer(qs)
 
             return Response(data=serializer.data)
 

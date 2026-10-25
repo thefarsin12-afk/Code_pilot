@@ -2,6 +2,8 @@ from django.db import models
 
 from accounts.models import User
 
+from datetime import datetime,time,timedelta,date
+
 class AssementModel(models.Model):
 
     title = models.CharField(max_length=200)
@@ -22,9 +24,9 @@ class AssementModel(models.Model):
 
     duration = models.PositiveIntegerField()
 
-    start_time= models.DateTimeField()
+    start_time= models.TimeField()
 
-    end_time = models.DateTimeField(null=True,blank=True)
+    end_time = models.TimeField(null=True,blank=True)
     
     created_by = models.ForeignKey(User,on_delete=models.CASCADE)
 
@@ -40,3 +42,11 @@ class AssementModel(models.Model):
     def __str__(self):
 
             return self.title
+
+    def save(self,*args,**kwargs):
+
+        end_time_date = datetime.combine(self.exam_date,self.start_time) + timedelta(hours=self.duration)
+
+        self.end_time = end_time_date.time()
+
+        return super().save(*args,**kwargs)

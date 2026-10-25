@@ -56,8 +56,8 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
   "batch": "Python Django Batch 01",
   "language": "DJANGO",
   "exam_date": "2026-10-25",
-  "duration": 90,
-  "start_time": "2026-10-25T09:00:00Z",
+  "duration": 2,
+  "start_time": "09:00:00",
   "status": "PENDING"
 }
 
