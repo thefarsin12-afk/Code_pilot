@@ -113,3 +113,34 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
     "sampleoutput":"output=4"
 
 }
+
+# api for retrieve question
+###
+GET http://127.0.0.1:8000/problem/question/2/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+#api for updating 
+###
+PUT http://127.0.0.1:8000/problem/question/1/
+Content-Type: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+{
+  "id": 1,
+  "title": "write a pgm to add two numbers",
+  "description": "write a pgm to add two numbers",
+  "score": 5,
+  "smapleinput": "2+2",
+  "sampleoutput": "output=4",
+  "created_at": "2026-10-26T06:09:49.226553Z",
+  "updated_at": "2026-10-26T06:09:49.226589Z",
+  "assesment": 2,
+  "created_by": 1
+}
+
+# api for delete
+###
+DELETE http://127.0.0.1:8000/problem/question/2/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936

@@ -3,10 +3,13 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import authentication,permissions
 from rest_framework.response import Response
+from rest_framework.generics import RetrieveAPIView,UpdateAPIView,DestroyAPIView
 
 from problem.serialiserz import QuestionSerilaizer
+from problem.models import QuestionModel
 
 from exams.models import AssementModel
+
 
 class QuestionCreateView(APIView):
 
@@ -31,3 +34,16 @@ class QuestionCreateView(APIView):
             return Response(data=serializer_instants.data)
 
         else:return Response(data=serializer_instants.errors)
+
+
+class QuestionRetrieveUpdateDeleteView(RetrieveAPIView,UpdateAPIView,DestroyAPIView):
+
+    authentication_classes = [authentication.TokenAuthentication]
+
+    permission_classes = [permissions.IsAdminUser]
+
+    serializer_class = QuestionSerilaizer
+
+    queryset = QuestionModel.objects.all()
+
+    
