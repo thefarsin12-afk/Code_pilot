@@ -24,4 +24,7 @@ urlpatterns = [
 
     # ==== EXAM APP SECTION ====
     path('exam/',include('exams.urls')),
+
+    # ==== QUESTION SECTION ====
+    path('problem/',include("problem.urls")),
 ]

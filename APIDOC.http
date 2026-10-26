@@ -91,3 +91,25 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 DELETE http://127.0.0.1:8000/exam/add/1/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+
+# ==== QUESTION SECTION ====
+
+# api for creating question
+###
+POST http://127.0.0.1:8000/problem/assesment/2/question/
+Content-Type: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+{
+    "title":"write a pgm to add two numbers",
+
+    "description":"write a pgm to add two numbers",
+
+    "score":80,
+
+    "smapleinput":"2+2",
+
+    "sampleoutput":"output=4"
+
+}
