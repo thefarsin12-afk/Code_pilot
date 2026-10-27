@@ -17,7 +17,7 @@ class QuestionModel(models.Model):
 
     smapleinput = models.TextField(null=True)
 
-    sampleoutput = models.TextField()
+    sampleoutput = models.TextField(null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -32,14 +32,16 @@ class QuestionModel(models.Model):
         return self.title
 
 
-    # def save(self,*args,**kwargs):
+    def save(self,*args,**kwargs):
 
-    #     last_object = QuestionModel.objects.filter(assesment=self.assesment).last()
+        last_object = QuestionModel.objects.filter(assesment=self.assesment).last()
 
-    #     if last_object:
+        if last_object:
 
-    #         self.qeustion_number = last_object + 1
+            self.qeustion_number = last_object.qeustion_number + 1
 
-    #     else:self.qeustion_number = 1
+        else:
+            
+            self.qeustion_number = 1
 
-    #     return super().save(*args,**kwargs)
+        return super().save(*args,**kwargs)

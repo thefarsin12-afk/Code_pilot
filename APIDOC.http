@@ -106,7 +106,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
     "description":"write a pgm to add two numbers",
 
-    "score":80,
+    "score":2,
 
     "smapleinput":"2+2",
 
@@ -116,7 +116,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for retrieve question
 ###
-GET http://127.0.0.1:8000/problem/question/2/
+GET http://127.0.0.1:8000/problem/question/1/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
