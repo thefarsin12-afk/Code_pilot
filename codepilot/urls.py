@@ -27,4 +27,7 @@ urlpatterns = [
 
     # ==== QUESTION SECTION ====
     path('problem/',include("problem.urls")),
+
+    # 
+    path('evalution/',include("evaluation.urls")),
 ]
