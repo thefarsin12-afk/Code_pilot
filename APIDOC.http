@@ -27,8 +27,6 @@ Content-Type: application/json
     "phone":"8967543268 "
 }
 
-# ======== EXAM ========
-
 # token generating api endpoint
 ###
 POST http://127.0.0.1:8000/exam/admin/login/
@@ -39,15 +37,17 @@ Content-Type: application/json
     "password":"password@123"
 }
 
-# api for exam listing
+# ======== EXAM ========
+
+# api for Assessment listing
 ###
-GET http://127.0.0.1:8000/exam/add/
+GET http://127.0.0.1:8000/exam/assessment/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for creating record
 ###
-POST http://127.0.0.1:8000/exam/add/
+POST http://127.0.0.1:8000/exam/assessment/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -63,13 +63,13 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for retrieve exam
 ###
-GET http://127.0.0.1:8000/exam/add/2/
+GET http://127.0.0.1:8000/exam/assessment/2/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for updating exam
 ###
-PUT http://127.0.0.1:8000/exam/add/1/
+PUT http://127.0.0.1:8000/exam/assessment/1/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -88,7 +88,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for deleting exam
 ###
-DELETE http://127.0.0.1:8000/exam/add/1/
+DELETE http://127.0.0.1:8000/exam/assessment/1/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -147,8 +147,31 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # ==== Evalution ====
 
+# ==== Submission ====
+
 #api for creating sumbmission
 ###
 POST http://127.0.0.1:8000/evalution/assesment/5/submission/
 Content-Type: application/json
 Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
+
+# api for submission listing
+###
+GET http://127.0.0.1:8000/evalution/submission/all/
+Content-Type: application/json
+Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
+
+
+# ==== Answer Section ====
+
+# api for creating answer
+###
+POST http://127.0.0.1:8000/evalution/submission/1/answer/
+Content-Type: application/json
+Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
+
+{
+  "question":3,
+
+  "answer_text":"input = num1=10,num2=10,output=print(num1+num2)"
+}

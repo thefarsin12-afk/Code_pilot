@@ -12,10 +12,10 @@ urlpatterns = [
     path('admin/login/',ObtainAuthToken.as_view()),
 
     # ==== exam list create section ====
-    path('add/',ExamListCreate.as_view()),
+    path('assessment/',ExamListCreate.as_view()),
 
     # ==== exam retrieve update delete section ====
-    path('add/<int:pk>/',ExamRetrieveUpdateDelete.as_view()),
+    path('assessment/<int:pk>/',ExamRetrieveUpdateDelete.as_view()),
 
     
 ]
