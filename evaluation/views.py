@@ -3,7 +3,7 @@ from django.shortcuts import render,get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication,permissions
-from rest_framework.generics import ListAPIView,RetrieveAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework import serializers
 
 
@@ -15,7 +15,6 @@ from evaluation.permissons import IsStudent
 from evaluation.models import Submission
 from evaluation.serilaizer import SubmissionSerializers
 from evaluation.serilaizer import AnswerSerializer
-
 
 
 
