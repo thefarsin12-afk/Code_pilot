@@ -63,7 +63,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for retrieve exam
 ###
-GET http://127.0.0.1:8000/exam/assessment/2/
+GET http://127.0.0.1:8000/exam/assessment/6/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -97,7 +97,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for creating question
 ###
-POST http://127.0.0.1:8000/problem/assesment/2/question/
+POST http://127.0.0.1:8000/problem/assesment/6/question/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -116,7 +116,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for retrieve question
 ###
-GET http://127.0.0.1:8000/problem/question/1/
+GET http://127.0.0.1:8000/problem/question/6/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -127,17 +127,18 @@ Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
-  "id": 1,
-  "title": "write a pgm to add two numbers",
-  "description": "write a pgm to add two numbers",
-  "score": 5,
-  "smapleinput": "2+2",
-  "sampleoutput": "output=4",
-  "created_at": "2026-10-26T06:09:49.226553Z",
-  "updated_at": "2026-10-26T06:09:49.226589Z",
-  "assesment": 2,
-  "created_by": 1
-}
+      "id": 3,
+      "title": "write a pgm to print hello world",
+      "description": "write a pgm to add two numbers",
+      "score": 2,
+      "smapleinput": "2+2",
+      "sampleoutput": "output=4",
+      "created_at": "2026-10-27T01:17:06.593955Z",
+      "qeustion_number": 2,
+      "updated_at": "2026-10-27T01:17:06.594031Z",
+      "assesment": 2,
+      "created_by": 1
+    }
 
 # api for delete
 ###
@@ -151,27 +152,34 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 #api for creating sumbmission
 ###
-POST http://127.0.0.1:8000/evalution/assesment/5/submission/
+POST http://127.0.0.1:8000/evalution/assesment/6/submission/
 Content-Type: application/json
 Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
 
 # api for submission listing
 ###
 GET http://127.0.0.1:8000/evalution/submission/all/
-Content-Type: application/json
+Accept: application/json
 Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
+
+# api for retrieve submission
+###
+GET http://127.0.0.1:8000/evalution/submission/13/
+Accept: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
 
 
 # ==== Answer Section ====
 
 # api for creating answer
 ###
-POST http://127.0.0.1:8000/evalution/submission/1/answer/
+POST http://127.0.0.1:8000/evalution/submission/13/answer/
 Content-Type: application/json
 Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
 
 {
-  "question":3,
+  "question":5,
 
-  "answer_text":"input = num1=10,num2=10,output=print(num1+num2)"
+  "answer_text":"print(num1+ num2)"
 }

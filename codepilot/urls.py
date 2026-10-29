@@ -22,12 +22,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('accounts.urls')),
 
-    # ==== EXAM APP SECTION ====
+    # ==== ASSESMENT SECTION ====
     path('exam/',include('exams.urls')),
 
     # ==== QUESTION SECTION ====
     path('problem/',include("problem.urls")),
 
-    # 
+    # ==== SUBMISSION AND ANSWER SECTION ====
     path('evalution/',include("evaluation.urls")),
 ]
