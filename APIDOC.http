@@ -183,3 +183,18 @@ Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
 
   "answer_text":"print(num1+ num2)"
 }
+
+
+# ==== Evaluate Marks ====
+
+###
+PUT http://127.0.0.1:8000/evalution/answer/
+Content-Type: application/json
+Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
+
+{
+   "marks_awarded":5,
+
+   "feedback":"Good"
+
+}
