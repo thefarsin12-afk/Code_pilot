@@ -4,6 +4,12 @@ from evaluation.models import Submission,Answer
 
 class SubmissionSerializers(serializers.ModelSerializer):
 
+    assessment = serializers.StringRelatedField(read_only=True)
+
+    student = serializers.StringRelatedField(read_only=True)
+
+    answers = serializers.SerializerMethodField(read_only=True)
+
 
     class Meta:
 
@@ -23,6 +29,15 @@ class SubmissionSerializers(serializers.ModelSerializer):
 
     #     return fields    
 
+    def get_answers(self,obj):
+
+        answer_object = Answer.objects.filter(submission=obj)
+
+        serializer_instants = AnswerSerializer(answer_object,many=True)
+
+        return serializer_instants.data
+    
+
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -33,4 +48,3 @@ class AnswerSerializer(serializers.ModelSerializer):
 
         read_only_fields = ["id","submission","marks_awarded","feedback","evaluated_at"]
 
-        
