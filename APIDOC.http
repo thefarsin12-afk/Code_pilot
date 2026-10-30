@@ -116,7 +116,7 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for retrieve question
 ###
-GET http://127.0.0.1:8000/problem/question/6/
+GET http://127.0.0.1:8000/problem/question/5/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -188,12 +188,12 @@ Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
 # ==== Evaluate Marks ====
 
 ###
-PUT http://127.0.0.1:8000/evalution/answer/
+PATCH  http://127.0.0.1:8000/evalution/answer/5/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
-   "marks_awarded":5,
+   "marks_awarded":6,
 
    "feedback":"Good"
 

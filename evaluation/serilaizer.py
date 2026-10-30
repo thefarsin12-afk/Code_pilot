@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from evaluation.models import Submission,Answer
 
+from evaluation.models import QuestionModel
+
 class SubmissionSerializers(serializers.ModelSerializer):
 
     assessment = serializers.StringRelatedField(read_only=True)
@@ -40,6 +42,8 @@ class SubmissionSerializers(serializers.ModelSerializer):
 
 class AnswerSerializer(serializers.ModelSerializer):
 
+    question = serializers.PrimaryKeyRelatedField(query_set=QuestionModel.objects.all())
+
     class Meta:
 
         model = Answer
@@ -48,3 +52,17 @@ class AnswerSerializer(serializers.ModelSerializer):
 
         read_only_fields = ["id","submission","marks_awarded","feedback","evaluated_at"]
 
+
+    def validate(self,validate_data):
+
+        marks_awarded = validate_data.get("marks_awarded")
+
+        score = validate_data.get("score")
+
+        if marks_awarded > score:
+
+            return serializers.ValidationError("Marks awarded > to score")
+
+        return marks_awarded
+
+         

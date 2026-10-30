@@ -3,7 +3,7 @@ from django.shortcuts import render,get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication,permissions
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView,UpdateAPIView
 from rest_framework import serializers
 
 
@@ -12,7 +12,7 @@ from exams.models import AssementModel
 from problem.models import QuestionModel
 
 from evaluation.permissons import IsStudent
-from evaluation.models import Submission
+from evaluation.models import Submission,Answer
 from evaluation.serilaizer import SubmissionSerializers
 from evaluation.serilaizer import AnswerSerializer
 
@@ -100,4 +100,48 @@ class SubmissionRetrieveView(APIView):
         serializer_instantce = SubmissionSerializers(instantce)
 
         return Response(data=serializer_instantce.data)
+
+class AnswerUpdateView(UpdateAPIView):
+
+    authentication_classes = [authentication.TokenAuthentication]
+
+    permission_classes = [permissions.IsAdminUser]
+
+    # serializer_class = AnswerSerializer
+
+    # queryset = Answer.objects.all()
+
+    def patch(self,request,pk=None):
+
+        answer_id = pk
+
+        form_data = request.data
+
+        answer_object = get_object_or_404(Answer,id=answer_id)
+
+        serilaizer_instance = AnswerSerializer(data=form_data,instance=answer_object,partial=True)
+
+        serilaizer_instance.fields["marks_awarded"].read_only=False
+
+        serilaizer_instance.fields["feedback"].read_only=False
+
+        
+
+        if serilaizer_instance.is_valid():
+
+            # Answer.objects.filter(id=answer_id).update(**form_data)
+
+            # response_data = {
+
+            #     "message":"answer evaluted"
+            # }
+
+            serilaizer_instance.save()
+
+            # return Response(data=response_data)
+            return Response(data=serilaizer_instance.data)
+
+        return Response(data=serilaizer_instance.errors)
+
+        
 
