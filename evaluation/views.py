@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import authentication,permissions
 from rest_framework.generics import ListAPIView,UpdateAPIView
 from rest_framework import serializers
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 from exams.models import AssementModel
@@ -20,9 +21,9 @@ from evaluation.serilaizer import AnswerSerializer
 
 class SubmissionStartView(APIView):
 
-    authentication_classes = [authentication.TokenAuthentication]
+    authentication_classes = [JWTAuthentication]
 
-    permission_classes = [IsStudent]
+    permission_classes = [permissions.IsAuthenticated,IsStudent]
 
     def post(self,request,pk=None):
 
@@ -49,7 +50,7 @@ class SubmissionListing(ListAPIView):
     
 class AnswerCreateView(APIView):
 
-    authentication_classes = [authentication.TokenAuthentication]
+    authentication_classes = [JWTAuthentication]
 
     permission_classes = [IsStudent]
 

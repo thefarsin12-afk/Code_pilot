@@ -8,8 +8,8 @@ from exams.views import ExamRetrieveUpdateDelete
 
 urlpatterns = [
 
-    # ==== token generating section ====
-    path('admin/login/',ObtainAuthToken.as_view()),
+    # # ==== token generating section ====
+    # path('admin/login/',ObtainAuthToken.as_view()),
 
     # ==== exam list create section ====
     path('assessment/',ExamListCreate.as_view()),

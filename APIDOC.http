@@ -29,12 +29,31 @@ Content-Type: application/json
 
 # token generating api endpoint
 ###
-POST http://127.0.0.1:8000/exam/admin/login/
+POST http://127.0.0.1:8000/account/token/
 Content-Type: application/json
 
 {
     "username":"student",
     "password":"password@123"
+}
+
+# ==== jwt token generating====
+###
+POST http://127.0.0.1:8000/account/jwt/token/
+Content-Type: application/json
+
+{
+  "username":"student",
+  "password":"password@123"
+}
+
+# ==== jwt token generating====
+###
+POST http://127.0.0.1:8000/account/jwt/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzcyNDEyNSwiaWF0IjoxNzkzNjM3NzI1LCJqdGkiOiJlODgxNWE3NGEzZDg0YjJiYjk4YTRiZTRjMDY5NTg3MCIsInVzZXJfaWQiOiIzIn0.ENV6t1jAy5ARGQRcKkmPLdzmCWnJLw5o1JVn6j5yf_E"
 }
 
 # ======== EXAM ========
@@ -52,18 +71,18 @@ Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
-  "title": "Django Assessment",
+  "title": "React Assessment",
   "batch": "Python Django Batch 01",
-  "language": "DJANGO",
-  "exam_date": "2026-10-25",
-  "duration": 2,
+  "language": "REACT.JS",
+  "exam_date": "2026-10-26",
+  "duration": 3,
   "start_time": "09:00:00",
   "status": "PENDING"
 }
 
 # api for retrieve exam
 ###
-GET http://127.0.0.1:8000/exam/assessment/6/
+GET http://127.0.0.1:8000/exam/assessment/7/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -75,11 +94,11 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
   "id": 1,
-  "title": "Python Assessment",
+  "title": "React Assessment",
   "batch": "Python Django Batch 01",
-  "language": "PYTHON",
+  "language": "React",
   "exam_date": "2026-10-26",
-  "duration": 60,
+  "duration": 90,
   "start_time": "2026-10-25T09:00:00Z",
   "end_time": "2026-10-25T10:00:00Z",
   "status": "PENDING",
@@ -97,20 +116,16 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for creating question
 ###
-POST http://127.0.0.1:8000/problem/assesment/6/question/
+POST http://127.0.0.1:8000/problem/assesment/9/question/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
-    "title":"write a pgm to add two numbers",
+    "title":"write a logic to identfy leap year",
 
-    "description":"write a pgm to add two numbers",
+    "description":"leapyear",
 
-    "score":2,
-
-    "smapleinput":"2+2",
-
-    "sampleoutput":"output=4"
+    "score":8
 
 }
 
@@ -152,10 +167,9 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 #api for creating sumbmission
 ###
-POST http://127.0.0.1:8000/evalution/assesment/6/submission/
+POST http://127.0.0.1:8000/evalution/assesment/9/submission/
 Content-Type: application/json
-Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjM4MDQ3LCJpYXQiOjE3OTM2Mzc3NDcsImp0aSI6ImFlODkwZjI1ZDRkZTRhYmM5ZDI0NDM5ZDNjNzVjZGM3IiwidXNlcl9pZCI6IjMifQ.icfMjxTkIdCJOHK3DCRSuJmX-B5gimUGlzS7dIYKNgs
 # api for submission listing
 ###
 GET http://127.0.0.1:8000/evalution/submission/all/
@@ -164,7 +178,7 @@ Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
 
 # api for retrieve submission
 ###
-GET http://127.0.0.1:8000/evalution/submission/13/
+GET http://127.0.0.1:8000/evalution/submission/16/
 Accept: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
@@ -174,27 +188,27 @@ Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 # api for creating answer
 ###
-POST http://127.0.0.1:8000/evalution/submission/13/answer/
+POST http://127.0.0.1:8000/evalution/submission/16/answer/
 Content-Type: application/json
-Authorization: Token 8159e590159dbb69a09962df67735b523c892d05
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjM4MDQ3LCJpYXQiOjE3OTM2Mzc3NDcsImp0aSI6ImFlODkwZjI1ZDRkZTRhYmM5ZDI0NDM5ZDNjNzVjZGM3IiwidXNlcl9pZCI6IjMifQ.icfMjxTkIdCJOHK3DCRSuJmX-B5gimUGlzS7dIYKNgs
 
 {
-  "question":5,
+  "question":7,
 
-  "answer_text":"print(num1+ num2)"
+  "answer_text":"if num%100==0 or num%400==0 and num%!=100 or num%4==0"
 }
 
 
 # ==== Evaluate Marks ====
 
 ###
-PATCH  http://127.0.0.1:8000/evalution/answer/5/
+PATCH  http://127.0.0.1:8000/evalution/answer/6/
 Content-Type: application/json
 Authorization: Token a131d17f962e5ad6ae8f17eca24ffc0b10384936
 
 {
    "marks_awarded":6,
 
-   "feedback":"Good"
+   "feedback":"That's great"
 
 }
