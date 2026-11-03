@@ -43,7 +43,7 @@ POST http://127.0.0.1:8000/account/jwt/token/
 Content-Type: application/json
 
 {
-  "username":"student",
+  "username":"alexander",
   "password":"password@123"
 }
 
@@ -53,8 +53,29 @@ POST http://127.0.0.1:8000/account/jwt/token/refresh/
 Content-Type: application/json
 
 {
-  "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzcyNDEyNSwiaWF0IjoxNzkzNjM3NzI1LCJqdGkiOiJlODgxNWE3NGEzZDg0YjJiYjk4YTRiZTRjMDY5NTg3MCIsInVzZXJfaWQiOiIzIn0.ENV6t1jAy5ARGQRcKkmPLdzmCWnJLw5o1JVn6j5yf_E"
+  "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5Mzc3NDI3NSwiaWF0IjoxNzkzNjg3ODc1LCJqdGkiOiJiNjRmZjhlY2RiYWQ0YTM4OGE3OTllODQxNTgwNWI1YyIsInVzZXJfaWQiOiI1In0.p5dn2i46-t4e4vZ-7qlqPQCD9T5xRqXnk39FHsqaX_Y"
 }
+
+# api for student profile editing
+###
+PUT http://127.0.0.1:8000/account/profile/complted/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg4NTUyLCJpYXQiOjE3OTM2ODgyNTIsImp0aSI6IjZlOGI1OTE0YjNmNjRhOGZhYzAxZDAyNDZiMThlMjY3IiwidXNlcl9pZCI6IjUifQ.riXpSHSVR1E7Z0TY4tT8ZWJu1h7WHpDAZcfT-QPxCFs
+
+{
+  "skills":"python,django,drf,html,css,mysql",
+  "qualification":"Ba",
+  "passoutyear":"2026",
+  "githuburl":"https://linkedin.com",
+  "linkedurl":"https://github.com"
+}
+
+# api for logged student profile
+###
+GET http://127.0.0.1:8000/account/me/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjg4NTUyLCJpYXQiOjE3OTM2ODgyNTIsImp0aSI6IjZlOGI1OTE0YjNmNjRhOGZhYzAxZDAyNDZiMThlMjY3IiwidXNlcl9pZCI6IjUifQ.riXpSHSVR1E7Z0TY4tT8ZWJu1h7WHpDAZcfT-QPxCFs
+
 
 # ======== EXAM ========
 

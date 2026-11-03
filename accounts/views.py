@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework import permissions
 
 from accounts.serailizers import UserSerializer
 from accounts.models import User
+from accounts.models import StudentProfile
+from accounts.serailizers import StudentProfileSerializer
+
+from evaluation.permissons import IsStudent
 
 class AdminCreateViwe(APIView):
 
@@ -47,3 +53,43 @@ class StudentCreateView(APIView):
         else:
 
             return Response(data=serializer.errors)
+
+
+
+class ProfileUpdateView(APIView):
+
+    authentication_classes = [JWTAuthentication]
+
+    permission_classes = [permissions.IsAuthenticated,IsStudent]
+
+    def put(self,request):
+
+        form_data = request.data
+
+        student_profile_object = StudentProfile.objects.get(student=request.user)
+
+        serilaize_instance = StudentProfileSerializer(data=form_data,instance=student_profile_object)
+
+        if serilaize_instance.is_valid():
+
+            serilaize_instance.save()
+
+            return Response(data=serilaize_instance.data)
+
+        else:return Response(data=serilaize_instance.errors)
+
+class GetMeView(APIView):
+
+    authentication_classes = [JWTAuthentication]
+
+    permission_classes = [IsStudent]
+
+    def get(self,request):
+
+        user = request.user        
+
+        instance = get_object_or_404(StudentProfile,student=user)
+
+        serializer_instance = StudentProfileSerializer(instance)
+
+        return Response(data= serializer_instance.data)
