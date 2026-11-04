@@ -41,5 +41,7 @@ def create_student_profile(sender,instance,created,*args,**kwargs):
         StudentProfile.objects.create(student=instance)
 
 # signal connecting
-post_save.connect(create_student_profile,sender=User)        
+post_save.connect(create_student_profile,sender=User)       
+
+
 
