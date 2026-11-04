@@ -5,6 +5,9 @@ from django.contrib.auth.models import AbstractUser
 # post save calling
 from django.db.models.signals import post_save
 
+# send mail importing 
+from django.core.mail import send_mail
+
 # Create your models here.
 class User(AbstractUser):
 
@@ -42,6 +45,23 @@ def create_student_profile(sender,instance,created,*args,**kwargs):
 
 # signal connecting
 post_save.connect(create_student_profile,sender=User)       
+
+# auto email genartaing section
+def send_inviation_mail(sender,instance,created,*args,**kwargs):
+
+    if created and instance.role == "student":
+
+        send_mail(
+            "Account creating conferamtion",
+            "You have created account in codepilote.",
+            "thefarsin12@gmail.com",
+            ["ayushnandakumar04@gmail.com"],
+    )
+
+post_save.connect(send_inviation_mail,sender=User)
+
+
+
 
 
 

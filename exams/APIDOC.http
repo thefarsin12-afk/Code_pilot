@@ -21,10 +21,10 @@ POST http://127.0.0.1:8000/account/student/register/
 Content-Type: application/json
 
 {
-    "username":"alexander",
-    "email":"alexi@gmail.com",
+    "username":"ayushnadhakumar",
+    "email":"ayushnandakumar04@gmail.com",
     "password":"password@123",
-    "phone":"9478394302 "
+    "phone":"8785643218"
 }
 
 # token generating api endpoint
@@ -43,7 +43,7 @@ POST http://127.0.0.1:8000/account/jwt/token/
 Content-Type: application/json
 
 {
-  "username":"alexander",
+  "username":"9478394302",
   "password":"password@123"
 }
 
