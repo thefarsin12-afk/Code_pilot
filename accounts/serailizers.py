@@ -15,6 +15,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class StudentProfileSerializer(serializers.ModelSerializer):
 
+    student = serializers.StringRelatedField(read_only=True)
+
     class Meta:
 
         model = StudentProfile

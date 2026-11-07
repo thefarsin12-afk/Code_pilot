@@ -146,3 +146,14 @@ class AnswerUpdateView(UpdateAPIView):
 
         
 
+class GetAllAnswerse(ListAPIView):
+
+    authentication_classes = [authentication.TokenAuthentication]
+
+    permission_classes = [permissions.IsAdminUser]
+
+    serializer_class = AnswerSerializer
+
+    queryset = Answer.objects.all()
+
+    

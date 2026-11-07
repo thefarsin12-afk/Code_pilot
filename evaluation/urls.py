@@ -2,6 +2,7 @@ from django.urls import path
 
 from evaluation.views import SubmissionStartView,SubmissionListing,SubmissionRetrieveView
 from evaluation.views import AnswerCreateView,AnswerUpdateView
+from evaluation.views import GetAllAnswerse
 
 urlpatterns = [
 
@@ -19,6 +20,9 @@ urlpatterns = [
 
    # answer put 
    path('answer/<int:pk>/',AnswerUpdateView.as_view()),
+
+   # all answer
+   path('answer/all/',GetAllAnswerse.as_view()),
 
 
 

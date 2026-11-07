@@ -42,7 +42,7 @@ class SubmissionSerializers(serializers.ModelSerializer):
 
 class AnswerSerializer(serializers.ModelSerializer):
 
-    # question = serializers.PrimaryKeyRelatedField(query_set=QuestionModel.objects.all())
+    question = serializers.StringRelatedField(read_only=True)
 
     class Meta:
 
@@ -64,5 +64,6 @@ class AnswerSerializer(serializers.ModelSerializer):
     #         return serializers.ValidationError("Marks awarded > to score")
 
     #     return marks_awarded
+
 
          
