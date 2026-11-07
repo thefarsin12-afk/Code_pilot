@@ -282,7 +282,7 @@ Recommended API test cases:
 
 **Muhammad Farsin M**
 
-GitHub: [@thefarsin12-afk](https://github.com/thefarsin12-afk)
+GitHub: [@Muhammed_Farsin_M](https://github.com/thefarsin12-afk)
 
 Project Repository: [CodePilot](https://github.com/thefarsin12-afk/Code_pilot)
 
